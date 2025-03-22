@@ -1,0 +1,323 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+
+    --radius: 0.5rem;
+
+    /* Custom colors for bar elements */
+    --bar-accent: 280 75% 60%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Custom animations */
+@keyframes pulse-slow {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slide-up {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Utility classes for animations */
+.animate-pulse-slow {
+  animation: pulse-slow 3s ease-in-out infinite;
+}
+
+.animate-fade-in {
+  animation: fade-in 1s ease-out forwards;
+}
+
+.animate-fade-in-delay {
+  opacity: 0;
+  animation: fade-in 1s ease-out 0.3s forwards;
+}
+
+.animate-fade-in-delay-2 {
+  opacity: 0;
+  animation: fade-in 1s ease-out 0.6s forwards;
+}
+
+.animate-slide-up {
+  opacity: 0;
+  animation: slide-up 0.8s ease-out 0.4s forwards;
+}
+
+/* Drop shadow effect for the logo */
+.filter.drop-shadow-glow {
+  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.5));
+}
+
+/* Custom styles for the Bar */
+.text-bar-accent {
+  color: hsl(var(--bar-accent));
+}
+
+.bg-bar-accent {
+  background-color: hsl(var(--bar-accent));
+}
+
+/* Animation delays */
+.animation-delay-700 {
+  animation-delay: 700ms;
+}
+
+.animation-delay-1300 {
+  animation-delay: 1300ms;
+}
+
+/* Custom pulse animation for neon effects */
+@keyframes pulse-subtle {
+  0%, 100% {
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 0.4;
+  }
+}
+
+.animate-pulse-subtle {
+  animation: pulse-subtle 3s ease-in-out infinite;
+}
+
+/* Holographic border effect */
+.holographic-border {
+  position: relative;
+  overflow: hidden;
+}
+
+.holographic-border::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, 
+    rgba(255, 0, 255, 0.1) 0%, 
+    rgba(0, 255, 255, 0.1) 25%, 
+    rgba(255, 255, 0, 0.1) 50%, 
+    rgba(255, 0, 255, 0.1) 75%, 
+    rgba(0, 255, 255, 0.1) 100%);
+  z-index: -1;
+  border-radius: inherit;
+  animation: rotate 3s linear infinite;
+}
+
+@keyframes rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Section title styling */
+.section-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: white;
+  max-width: 800px;
+  position: relative;
+  display: inline-block;
+  padding-bottom: 0.5rem;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, hsl(var(--bar-accent)), transparent);
+}
+
+/* AspectRatio component styles */
+.aspect-ratio-wrapper {
+  position: relative;
+}
+
+.aspect-ratio-spacer {
+  width: 100%;
+}
+
+/* Common predefined aspect ratios */
+.aspect-ratio-1-1 { padding-bottom: 100%; }
+.aspect-ratio-4-3 { padding-bottom: 75%; }
+.aspect-ratio-16-9 { padding-bottom: 56.25%; }
+.aspect-ratio-21-9 { padding-bottom: 42.86%; }
+.aspect-ratio-3-2 { padding-bottom: 66.67%; }
+.aspect-ratio-3-4 { padding-bottom: 133.33%; }
+.aspect-ratio-9-16 { padding-bottom: 177.78%; }
+.aspect-ratio-2-1 { padding-bottom: 50%; }
+.aspect-ratio-1-2 { padding-bottom: 200%; }
+.aspect-ratio-5-4 { padding-bottom: 80%; }
+.aspect-ratio-4-5 { padding-bottom: 125%; }
+.aspect-ratio-5-3 { padding-bottom: 60%; }
+.aspect-ratio-3-5 { padding-bottom: 166.67%; }
+.aspect-ratio-7-5 { padding-bottom: 71.43%; }
+.aspect-ratio-5-7 { padding-bottom: 140%; }
+
+/* Custom aspect ratios using data attributes */
+.aspect-ratio-custom[data-ratio="1.25"] .aspect-ratio-spacer { padding-bottom: 80%; }
+.aspect-ratio-custom[data-ratio="1.33"] .aspect-ratio-spacer { padding-bottom: 75.19%; }
+.aspect-ratio-custom[data-ratio="1.5"] .aspect-ratio-spacer { padding-bottom: 66.67%; }
+.aspect-ratio-custom[data-ratio="1.6"] .aspect-ratio-spacer { padding-bottom: 62.5%; }
+.aspect-ratio-custom[data-ratio="1.66"] .aspect-ratio-spacer { padding-bottom: 60.24%; }
+.aspect-ratio-custom[data-ratio="1.75"] .aspect-ratio-spacer { padding-bottom: 57.14%; }
+.aspect-ratio-custom[data-ratio="1.77"] .aspect-ratio-spacer { padding-bottom: 56.5%; }
+.aspect-ratio-custom[data-ratio="1.78"] .aspect-ratio-spacer { padding-bottom: 56.25%; }
+.aspect-ratio-custom[data-ratio="2"] .aspect-ratio-spacer { padding-bottom: 50%; }
+.aspect-ratio-custom[data-ratio="2.33"] .aspect-ratio-spacer { padding-bottom: 42.92%; }
+.aspect-ratio-custom[data-ratio="2.35"] .aspect-ratio-spacer { padding-bottom: 42.55%; }
+.aspect-ratio-custom[data-ratio="2.4"] .aspect-ratio-spacer { padding-bottom: 41.67%; }
+.aspect-ratio-custom[data-ratio="2.5"] .aspect-ratio-spacer { padding-bottom: 40%; }
+.aspect-ratio-custom[data-ratio="2.6"] .aspect-ratio-spacer { padding-bottom: 38.46%; }
+.aspect-ratio-custom[data-ratio="3"] .aspect-ratio-spacer { padding-bottom: 33.33%; }
+
+.aspect-ratio-content {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+/* Instagram Feed styles */
+.elfsight-app-3e805b8a-5eab-4485-93cc-489d1122c66c {
+  width: 100%;
+}
+
+/* Fix for high contrast mode */
+@media (forced-colors: active) {
+  .eapps-instagram-feed-posts-item,
+  .eapps-instagram-feed-posts-item-image,
+  .eapps-instagram-feed-posts-item-content,
+  .eapps-instagram-feed-posts-item-overlay {
+    -webkit-appearance: none;
+    -webkit-font-smoothing: antialiased;
+    color-scheme: light;
+    /* Safari/iOS compatible alternatives */
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}
+
+/* Fix for deprecated -ms-high-contrast media query */
+@media (-ms-high-contrast: active), (-ms-high-contrast: black-on-white), (-ms-high-contrast: white-on-black) {
+  .eapps-instagram-feed-posts-item,
+  .eapps-instagram-feed-posts-item-image,
+  .eapps-instagram-feed-posts-item-content,
+  .eapps-instagram-feed-posts-item-overlay,
+  [class*="eapps-instagram-"] {
+    forced-color-adjust: none;
+    -webkit-appearance: none;
+    appearance: none;
+    -webkit-font-smoothing: antialiased;
+    color-scheme: light;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}
+
+/* Google Reviews Styles */
+.elfsight-app-f4fdffed-81de-4d5d-b688-2da302faebbe {
+  width: 100%;
+}
+
+/* Ensure review photos load properly */
+.elfsight-app-f4fdffed-81de-4d5d-b688-2da302faebbe img {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  border-radius: 50%;
+}
